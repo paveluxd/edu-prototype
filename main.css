@@ -106,6 +106,11 @@ body{
     position: fixed;
 }
 
+.modal{
+    height: 400px;
+    width: 400px;
+}
+
 nav {
     position: fixed;
     top: 8px;
@@ -152,4 +157,16 @@ nav {
 
 #q-cont button{
     font-size: 18px;
+}
+
+/* Units */
+.hurt {
+    animation-name: hurt;
+    animation-duration: 200ms;    
+}
+
+@keyframes hurt {
+    0% {filter: opacity(100%) grayscale(0%);}
+    10% {filter: opacity(50%) grayscale(100%);}
+    100% {filter: opacity(100%) grayscale(0%);}
 }

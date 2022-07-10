@@ -2,14 +2,8 @@
 let answerIco = '<img style="height:16px; width:16px;" src="./img/ico-gold.svg">'
 let lifeIco = '<img style="height:16px; width:16px;" src="./img/ico-life.svg">'
 
-function hide(elem){
-    if(elem ==='skills'){
-        document.querySelector('#skills').classList.toggle('hide')
-        document.querySelector('#q-cont').classList.toggle('hide')
-    }
-    else if (elem ==='main'){
-        document.querySelector('#main-screen').classList.toggle('hide')
-    }
+function hide(idString){
+    document.querySelector('#' + idString).classList.toggle('hide')  
 }
 
 function rNum(max, min){
@@ -281,6 +275,7 @@ function setBattlefield(){
         //Pick image
         let unitImg = document.createElement('img')
         unitImg.setAttribute('src', './img/' + unitObj.class + '.svg')
+        unitImg.id = elem + '-unit'
         if(elem === 'enemy'){
             unitImg.setAttribute('src', './img/units/' + rNum(enemyImgQuant) + '.png')
             unitImg.setAttribute('style', 'width:120px; height: 120px;')
@@ -339,7 +334,7 @@ function answer(btn){
 
         //Find the question
         if(qSet[elem].question === question.innerHTML){
-            
+
             //Correct
             if(btnContent === answerIco + qSet[elem].answer){
 
@@ -350,16 +345,34 @@ function answer(btn){
 
                 //Load next question
                 getQuestion()
+
+                //Run animation
+                document.querySelector('#enemy-unit').classList.toggle('hurt')
+
+                setTimeout(function(){
+                    document.querySelector('#enemy-unit').classList.toggle('hurt') 
+                },
+                200);
             }
 
             //Wrong
             else {
                 //Wrong answer logic
                 player.life--
+
                 gameLog.innerHTML = "Incorrect, you lost 1 life."
                 document.querySelector('#player-stats-elem').innerHTML = lifeIco + player.life 
+
+                //Run animation
+                document.querySelector('#player-unit').classList.toggle('hurt')
+
+                setTimeout(function(){
+                    document.querySelector('#player-unit').classList.toggle('hurt') 
+                },
+                200);
             }
 
+            //Check if anyone is dead
             //Player dead
             if(player.life < 1){
                 qElem.innerHTML = "<h1>Game over! You have died.</h1><br>Refresh to try again."
@@ -370,6 +383,11 @@ function answer(btn){
             //Enemy dead
             else if (enemy.life < 1){
                 gameLog.innerHTML = "Victory! You defeted the enemy. Next round!"
+
+                //Generate rewards
+
+                //Show reward screen
+                hide('reward-screen')
 
                 //Start next round
                 setBattlefield()
