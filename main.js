@@ -15,6 +15,7 @@ function rNum(max, min){
 
 //Game data
 let round = 0
+let rewards = ['life', 'gold']
 
 let gameState = {
     player: {
@@ -384,14 +385,41 @@ function answer(btn){
             else if (enemy.life < 1){
                 gameLog.innerHTML = "Victory! You defeted the enemy. Next round!"
 
-                //Generate rewards
-
                 //Show reward screen
                 hide('reward-screen')
+
+                //Generate rewards
+                let rewardContainer = document.querySelector('#reward-rewards')
+                rewardContainer.innerHTML = ''
+
+                rewards.forEach(function(reward){
+                    let rewItem = document.createElement('button')
+                    rewItem.innerHTML = reward
+                    rewItem.classList = 'sec'
+                    rewItem.setAttribute('onclick', 'getReward("' + reward + '")')
+                    rewardContainer.append(rewItem)
+                })
 
                 //Start next round
                 setBattlefield()
             }
         }
     })
+}
+
+function getReward(reward){
+
+    //Life
+    if(reward === rewards[0]){
+        gameState.player.life++
+        document.querySelector('#player-stats-elem').innerHTML = lifeIco + gameState.player.life
+
+        //Hide reward screen
+        hide('reward-screen')
+    }
+    //Gold
+    else if(reward === rewards[1]){
+        //Hide reward screen
+        hide('reward-screen')
+    }
 }
