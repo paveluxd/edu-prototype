@@ -1,0 +1,155 @@
+/* Main css */
+:root {
+	--yellow: rgb(255, 179, 0);
+	--b5: rgba(0,0,0,0.5);
+	--b10: rgba(0,0,0,0.1);
+	--button: rgb(75, 75, 75);
+	--black: #1b1d23;
+	--w25: rgba(255, 255, 255, 0.25);
+    --w10: rgba(255, 255, 255, 0.10);
+
+	--red: rgb(221, 57, 57);
+
+    --grass-grad: linear-gradient(180deg, #273534 0%, #3C4442 100%);
+}
+
+*{
+    /* border: 1px solid red; */
+
+    font-family: 'Inter', sans-serif;
+    line-height: 136%;
+    font-size: 18px;
+}
+
+/* Mods */
+.hide{
+	display: none !important;
+}
+
+.row{
+    flex-direction: row !important;
+}
+
+.sec {
+    background-color: var(--w0);
+}
+
+.ico-btn {
+    padding: 12px;
+    outline: 1px solid var(--w25);
+}
+
+.sec:hover {
+    background-color: var(--w10);
+}
+
+.mr-bot{
+    margin-bottom: 12px
+}
+
+/* Primitives */
+h1 {
+    font-family: 'Grenze', sans-serif;
+}
+
+h3{
+    font-size: 22px;
+    font-weight: 400;
+}
+
+button{
+    padding: 11px 16px 13px 16px;
+
+    font-size: 26px;
+    font-weight: 400;
+    font-family: 'Grenze', sans-serif;
+
+    background-color: var(--red);
+    color: white;
+
+    cursor: pointer;
+    border: none;
+
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+a{
+    color: white;
+}
+
+/* Containers */
+body, html{
+    height: 100%;
+    width: 100%;
+}
+
+body, .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+body{
+    color: white;
+    background: var(--grass-grad);
+}
+
+.cover{
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--black);
+    z-index: 2;
+    position: fixed;
+}
+
+nav {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+
+    display: flex;
+    gap: 8px;
+}
+
+#bot-nav{
+    width: 600px;
+    height: 320px;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+#battlefield{
+    height: 36vh;
+    width: 100%;
+    align-items: flex-end;
+    padding-bottom: 80px;
+
+    background-image: url("./img/bg.svg");
+    background-position: bottom center;
+    background-repeat: no-repeat;
+}
+
+#q-cont{
+    align-items: flex-start;
+    width: 100%;
+    gap: 0px;
+}
+
+#skills{
+    align-items: flex-start;
+    width: 100%;    
+}
+
+#q-cont *{
+    width: 100%;
+    text-align: left;
+    font-family: 'Inter', sans-serif;  
+}
+
+#q-cont button{
+    font-size: 18px;
+}

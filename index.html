@@ -5,8 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Of Morr</title>
+
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="main.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
-    Test
+    <div id="main-screen" class="container cover">
+        <h1>Book Of Morr</h1>
+        <p>An exciting role playing game.</p>
+        <button onclick="hide('main')">Play</button>
+        <a href="">Join game Discord server.</a>
+    </div>
+
+    <nav>
+        <button class="sec ico-btn"><img src="./img/ico-settings.svg" alt=""></button>
+        <div class="container">
+            <h3 id="round"></h3>
+            <p id="log"></p>
+        </div>
+    </nav>
+
+    <div id="battlefield" class="container row">
+    </div>
+
+    <div id="bot-nav" class="container row">
+        <div id="skills" class="container hide">
+            <p>Choose a skill</p>
+            <button onclick="hide('skills')">Attack</button>
+            <button>Block</button>
+            <button>Skill 1</button>
+        </div>
+
+        <div id="q-cont" class="container">
+            <h3 id="question" class="mr-bot"></h3>
+        </div>
+    </div>
 </body>
+
+<script src="./main.js"></script>
 </html>
