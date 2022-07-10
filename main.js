@@ -15,11 +15,12 @@ function rNum(max, min){
 
 //Game data
 let round = 0
-let rewards = ['life', 'gold']
+let rewards = ['+1 Life', '+1 Gold', '+1 Damage']
 
 let gameState = {
     player: {
         life: 10,
+        damage: 1,
         class: 'knight'
     },
     enemy: {
@@ -340,7 +341,7 @@ function answer(btn){
             if(btnContent === answerIco + qSet[elem].answer){
 
                 //Combat phase
-                enemy.life--
+                enemy.life -= gameState.player.damage
                 gameLog.innerHTML = "Correct"
                 document.querySelector('#enemy-stats-elem').innerHTML = lifeIco + enemy.life
 
@@ -407,6 +408,7 @@ function answer(btn){
     })
 }
 
+//Rewards
 function getReward(reward){
 
     //Life
@@ -420,6 +422,11 @@ function getReward(reward){
     //Gold
     else if(reward === rewards[1]){
         //Hide reward screen
+        hide('reward-screen')
+    }
+    //Damage
+    else if(reward === rewards[2]){
+        gameState.player.damage++
         hide('reward-screen')
     }
 }
